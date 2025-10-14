@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "PendejitoClass.generated.h"
+#include "OverlapTest.generated.h"
 
 UCLASS()
-class OBSTACLECOURSE_API APendejitoClass : public AActor
+class OBSTACLECOURSE_API AOverlapTest : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	APendejitoClass();
+	AOverlapTest();
 
 protected:
 	// Called when the game starts or when spawned
