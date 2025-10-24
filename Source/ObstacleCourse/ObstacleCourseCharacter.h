@@ -49,12 +49,6 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MouseLookAction;
 
-	UPROPERTY(EditAnywhere, Category = "Input")
-	UInputAction* RespawnAction;
-public:
-	UPROPERTY(VisibleAnywhere, Category = "Respawn")
-	FVector RespawnLocation;
-
 public:
 
 	/** Constructor */
@@ -64,8 +58,6 @@ protected:
 
 	/** Initialize input action bindings */
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	virtual void BeginPlay() override;
 
 protected:
 
@@ -92,9 +84,6 @@ public:
 	/** Handles jump pressed inputs from either controls or UI interfaces */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoJumpEnd();
-
-	UFUNCTION(BlueprintCallable, Category = "Input")
-	virtual void DoRespawn();
 
 public:
 
