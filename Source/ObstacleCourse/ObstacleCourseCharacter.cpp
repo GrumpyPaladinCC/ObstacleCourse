@@ -65,11 +65,19 @@ void AObstacleCourseCharacter::SetupPlayerInputComponent(UInputComponent* Player
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AObstacleCourseCharacter::Look);
+
+		EnhancedInputComponent->BindAction(RespawnAction, ETriggerEvent::Started, this, &AObstacleCourseCharacter::DoRespawn);
 	}
 	else
 	{
 		UE_LOG(LogObstacleCourse, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
+}
+
+void AObstacleCourseCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	RespawnLocation = GetActorLocation();
 }
 
 void AObstacleCourseCharacter::Move(const FInputActionValue& Value)
@@ -130,4 +138,11 @@ void AObstacleCourseCharacter::DoJumpEnd()
 {
 	// signal the character to stop jumping
 	StopJumping();
+}
+
+void AObstacleCourseCharacter::DoRespawn()
+{
+	SetActorLocation(RespawnLocation);
+
+	UE_LOG(LogObstacleCourse, Log, TEXT("Respawning %s to location %s"), *GetName(), *RespawnLocation.ToString());
 }
