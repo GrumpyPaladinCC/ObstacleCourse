@@ -96,6 +96,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	virtual void DoRespawn();
 
+	UPROPERTY(EditAnywhere, Category = "Health")
+	float MaxHealth = 100.f;
+
+	UPROPERTY(EditAnywhere, Category = "Health")
+	float CurrentHealth;
+
 public:
 
 	/** Returns CameraBoom subobject **/

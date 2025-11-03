@@ -77,6 +77,8 @@ void AObstacleCourseCharacter::SetupPlayerInputComponent(UInputComponent* Player
 void AObstacleCourseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	CurrentHealth = MaxHealth;
+	UE_LOG(LogObstacleCourse, Log, TEXT("Max Health set to %f"), CurrentHealth);
 	RespawnLocation = GetActorLocation();
 }
 
@@ -143,6 +145,5 @@ void AObstacleCourseCharacter::DoJumpEnd()
 void AObstacleCourseCharacter::DoRespawn()
 {
 	SetActorLocation(RespawnLocation);
-
 	UE_LOG(LogObstacleCourse, Log, TEXT("Respawning %s to location %s"), *GetName(), *RespawnLocation.ToString());
 }
